@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanCart — Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+       <div class="logoimg">
+         <img class="HeadeLogo"  onclick="window.location.reload();" src="imges/Logo.png">
+       </div>
+        <div class="HeadeLogo_Name"><p class="LogoName"
+          onclick="window.location.reload();">UrbanCart</p>
+       </div> 
+    </div>
+
+    <nav class="Nav">
+    <div class="Shop">
+        <a href="javascript:void(0)" class="active" id="nav-shop">Shop</a>
+    </div>
+    <div class="Cart">
+        <div class="Cartimg">
+            <img src="imges/cart.png" alt="CartLogo">
+        </div>
+        <div class="CartInfo"> 
+    <a href="C:\Users\prade\OneDrive\Desktop\New git Project\javascript-projects-starter\02-urbancart\ufff.html" class="cart-icon" id="nav-cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        Cart
+        <span id="cart-count" class="badge">0</span> 
+    </a>
+</div>
+    </div>
+</nav>
+</header>
+
+  <main>
+    <!-- HERO SECTION -->
+<section class="hero">
+    <h1>Discover Amazing Deals</h1>
+    <p>Shop the latest products at unbeatable prices. Free shipping<br> on orders over $50.</p>
+
+    <div class="search-box">
+        <img src="imges/search.png" alt="searchimg">
+        <i class="fa fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search for products...">
+    </div>
+  </section>
+  
+    <!-- Featured / Staff Picks section -->
+    <section id="Staff Picks">
+       <div class="FeaturedHeading">
+         <h1 class="FeaturedHeading1">Staff Picks</h1>
+         <p class="FeaturedHeading2">Hand-picked favorites from our team</p>
+       </div>
+       <div class="Featureditems">
+         <div class="Featureditem">
+            <div class="Featuredimg">
+              <img src="imges/Beauty.webp" alt="Featuredimgs">
+            </div>
+            <div class="Featured_ProductCategories">
+              <h3 class="ProductCategories ">Beauty</h3>
+            </div>
+            <div class="Featured_ProductName">
+              <p class="ProductName">Essence Mascara Lash Princess</p>
+            </div>
+            <div class="FeaturedRating">
+              ★★⯪✰✰<span class="RatingNum">2.6</span>
+            </div>
+            <div class="FeaturedCost">
+              <span class="Cost1">$8.94</span>
+              <span class="Cost2">$9.99</span>
+
+            </div>
+            <div class="FeaturedButton">
+              <button onclick="addToCart(1,'Essence Mascara Lash Princess',8.94,'images/mascara.png')">
+                    Add to Cart
+              </button>  
+            </div>
+
+          </div>
+          <div class="Featureditem">
+              <div class="Featuredimg">
+                <img src="imges/Calvin Klein CK One.webp" alt="Featuredimgs">
+              </div>
+              <div class="Featured_ProductCategories">
+                <h3 class="ProductCategories ">Fragrances</h3>
+              </div>
+              <div class="Featured_ProductName">
+               <p class="ProductName">Calvin Klein CK One</p>
+              </div>
+              <div class="FeaturedRating">
+                ★★★★⯪<span class="RatingNum">4.4</span>
+              </div>
+              <div class="FeaturedCost">
+                <span class="Cost1">$49.05</span>
+                <span class="Cost2">$49.99</span>
+              </div>
+              <div class="FeaturedButton">
+               <button  onclick="addToCart(2,'Calvin Klein CK One',49.05,'images/perfume.png')">
+                    Add to Cart
+               </button>
+              </div>
+          </div>
+          <div class="Featureditem">
+              <div class="Featuredimg">
+                 <img src="imges/Annibale Colombo Bed.webp" alt="Featuredimgs">
+              </div>
+              <div class="Featured_ProductCategories">
+                 <h3 class="ProductCategories ">Furniture</h3>
+              </div>
+              <div class="Featured_ProductName">
+                <p class="ProductName">Annibale Colombo Bed</p> 
+              </div>
+              <div class="FeaturedRating">
+                ★★★★⯪<span class="RatingNum">4.8</span>
+              </div>
+              <div class="FeaturedCost">
+                <span class="Cost1">$1,737.16</span>
+                <span class="Cost2">$1,899.99</span>
+              </div>
+              <div class="FeaturedButton">
+                <button onclick="addToCart(3,'Annibale Colombo Bed',1737.16,'images/bed.png')">
+                    Add to Cart
+                </button>
+              </div>
+          </div>
+          <div class="Featureditem">
+             <div class="Featuredimg">
+               <img src="imges/Sink With Mirror.webp" alt="Featuredimgs">
+              </div>
+              <div class="Featured_ProductCategories">
+                <h3 class="ProductCategories ">Furniture</h3>
+              </div>
+              <div class="Featured_ProductName">
+                <p class="ProductName">Wooden Bathroom Sink With Mirror</p> 
+              </div>
+              <div class="FeaturedRating">
+                ★★★⯪✰<span class="RatingNum">3.6</span>
+              </div>
+              <div class="FeaturedCost">
+                <span class="Cost1">$729.59</span>
+                <span class="Cost2">$799.99</span>
+              </div>
+              <div class="FeaturedButton">
+                <button onclick="addToCart(3,'Annibale Colombo Bed',1737.16,'images/bed.png')">
+                    Add to Cart
+                </button>
+              </div>
+          </div>
+       </div>
+  
+    <!-- Category filter pills -->
+     <section id="CategoryPills">
+       <div class="filters" id="filters">
+  <!-- <button class="filterButton" onclick="filterProducts('all')">All Products</button>
+  <button class="filterButton" onclick="filterProducts('beauty')">Beauty</button>
+  <button class="filterButton" onclick="filterProducts('fragrance')">Fragrance</button>
+  <button class="filterButton" onclick="filterProducts('furniture')">Furniture</button>
+  <button class="filterButton" onclick="filterProducts('groceries')">Groceries</button>
+  <button class="filterButton" onclick="filterProducts('home decoration')">Home Decoration</button>
+  <button class="filterButton" onclick="filterProducts('kitchen accessories')">Kitchen Accessories</button>
+  <button class="filterButton" onclick="filterProducts('laptops')">Laptops</button>
+  <button class="filterButton" onclick="filterProducts('men shirts')">Men Shirts</button>
+  <button class="filterButton" onclick="filterProducts('men shoes')">Men Shoes</button>
+  <button class="filterButton" onclick="filterProducts('men watches')">Men Watches</button>
+  <button class="filterButton" onclick="filterProducts('mobile accessories')">Mobile Accessories</button>
+  <button class="filterButton" onclick="filterProducts('motorcycle')">Motorcycle</button>
+  <button class="filterButton" onclick="filterProducts('skin care')">Skin Care</button>
+  <button class="filterButton" onclick="filterProducts('smartphones')">Smartphones</button>
+  <button class="filterButton" onclick="filterProducts('sports accessories')">Sports Accessories</button>
+  <button class="filterButton" onclick="filterProducts('sunglasses')">Sunglasses</button>
+  <button class="filterButton" onclick="filterProducts('tablets')">Tablets</button>
+  <button class="filterButton" onclick="filterProducts('tops')">Tops</button>
+  <button class="filterButton" onclick="filterProducts('vehicle')">Vehicle</button>
+  <button class="filterButton" onclick="filterProducts('womens bags')">Womens Bags</button>
+  <button class="filterButton" onclick="filterProducts('women dresses')">Women Dresses</button>
+  <button class="filterButton" onclick="filterProducts('women jewellery')">Women Jewellery</button>
+  <button class="filterButton" onclick="filterProducts('women shoes')">Women Shoes</button>
+  <button class="filterButton" onclick="filterProducts('Women watches')">Women Watches</button> -->
+   <button class="filterButton">All Products</button>
+   
+            </div>
+                <!-- Sorting -->
+             <section>
+               <div class="Sort">
+                 <div class="ShowingProducts">
+          <p class="ShowProducts" id="showCount">
+             Showing 0 of 0 products
+          </p>
+              </div>  
+             <div class="Sorting">
+          <span>Sort by:</span>
+             <select id="sortSelect">
+               <option value="default">Default</option>
+               <option value="low">Price: Low to High</option>
+               <option value="high">Price: High to Low</option>
+               <option value="rating">Top Rated</option>
+               <option value="name">Name: A-Z</option>
+              </select>
+             </div>
+              </div>
+               </section>
+             <div class="product" id="product">
+                <!-- <div class="productItems">
+                 +<div class="productimg">
+                     <img class="product-card__image" src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp" alt="Essence Mascara Lash Princess" loading="lazy">
+                   </div>
+                      <div class="Product-cardCategories">
+              <h3 class="ProductCategories ">Beauty</h3>
+            </div>
+            <div class="Product-card_Name">
+              <p class="ProductName">Essence Mascara Lash Princess</p>
+            </div>
+            <div class="Product-card_Rating">
+              <span>⭐⭐⭐⭐</span>
+            </div>
+            <div class="Product-card_Cost">
+              <span class="Cost1">$8.94</span>
+              <span class="Cost2">$9.99</span>
+
+            </div>
+            <div class="Product-cardButton">
+              <button onclick="addToCart(1,'Essence Mascara Lash Princess',8.94,'images/mascara.png')">
+                    Add to Cart
+              </button>  
+            </div> -->
+
+         </div>
+
+       </div>
+     </section>
+     <main>
+
+  <div id="view-cart" style="display: none; padding: 40px 5%;">
+      <h1 class="FeaturedHeading1">Shopping Cart</h1>
+      
+      <div class="cart-layout" style="display: flex; gap: 30px; margin-top: 30px; align-items: flex-start;">
+          
+          <div id="cart-items-container" style="flex: 2;">
+              </div>
+
+          <aside class="order-summary" style="flex: 1; border: 1px solid #ddd; padding: 25px; border-radius: 12px; background: #fff; position: sticky; top: 20px;">
+              <h2 style="margin-top: 0;">Order Summary</h2>
+              <hr>
+              <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                  <span>Subtotal</span>
+                  <span id="summary-subtotal">$0.00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin: 15px 0;">
+                  <span>Shipping</span>
+                  <span style="color: green; font-weight: bold;">FREE</span>
+              </div>
+              <hr>
+              <div style="display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: bold; margin: 20px 0;">
+                  <span>Total</span>
+                  <span id="summary-total">$0.00</span>
+              </div>
+              <button class="LoadButton" style="width: 100%;" onclick="alert('Proceeding to Checkout!')">Checkout Now</button>
+              <p style="text-align: center; color: #666; cursor: pointer; margin-top: 15px;" onclick="showHome()">Continue Shopping</p>
+          </aside>
+      </div>
+  </div>
+
+  <div id="toast" style="position: fixed; bottom: 20px; right: -300px; background: #333; color: white; padding: 15px 25px; border-radius: 8px; transition: 0.5s; z-index: 10000;"></div>
+</main>
+    <!-- Sort bar -->
+     <!-- <div class="">Showing of products</div>
+     <div class=""></div> -->
+
+    <!-- Product grid with loading state, empty state, and load more -->
+     <div class="LoadingButton"> 
+       <button class=LoadButton>Load More Products</button>
+     </div>
+  </main>
+
+  <footer>
+    <p class="FooterSection">&copy; 2026 UrbanCart. All rights reserved.</p>
+  </footer>
+
+  <script src="product.js"></script>
+</body>
+</html>
