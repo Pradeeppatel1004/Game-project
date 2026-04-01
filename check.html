@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanCart — Checkout</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanCart — Checkout</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="checkout">
-    <header class="navbar">
-        <div class="logo" onclick="window.location.href='index.html'">UrbanCart</div>
-    </header>
-    <main class="container">
-        <div class="stepper" id="checkout-stepper">
-            <div class="step active"><span>1</span><p>Cart</p></div>
-            <div class="step active"><span>2</span><p>Shipping</p></div>
-            <div class="step active"><span>3</span><p>Payment</p></div>
-            <div class="step"><span>4</span><p>Confirmation</p></div>
-        </div>
-        <div class="layout-grid">
-            <form id="view-checkout" class="view active" onsubmit="handlePlaceOrder(event)">
+  <header>
+  </header>
+  <main>  
+<div class="container">
+    <div class="stepper" id="checkout-stepper" style="display:none;">
+        <div class="step active"><span>1</span><p>Cart</p></div>
+        <div class="step active"><span>2</span><p>Shipping</p></div>
+        <div class="step active"><span>3</span><p>Payment</p></div>
+        <div class="step" id="step-confirm"><span>4</span><p>Confirmation</p></div>
+    </div>
+      <form id="view-checkout" class="view" onsubmit="event.preventDefault(); finalizeOrder();">
                 <div class="checkout-block">
                     <h2 class="section-title">Shipping Information</h2>
                     <div class="form-card">
@@ -39,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="checkout-block">
+     <div class="checkout-block">
                     <h2 class="section-title">Payment Information</h2>
                     <div class="form-card">
                         <div class="f-group full"><label>Cardholder Name</label><input type="text" placeholder="John Doe" required></div>
@@ -50,26 +48,13 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn-main place-order-btn">Place Order</button>
+   
+      <button type="submit" class="btn-main place-order-btn">Place Order</button>
             </form>
-
-            <aside class="sidebar-aside">
-                <div class="summary-card">
-                    <h3>Order Summary</h3>
-                    <div id="checkout-thumbnails"></div>
-                    <div class="price-line total-line">
-                        <strong>Total</strong>
-                        <strong id="final-total">$0.00</strong>
-                    </div>
-                </div>
-            </aside>
-        </div>
-    </main>
-
-    <footer style="text-align: center; padding: 20px; color: #888;">
-        <p>&copy; 2026 UrbanCart. All rights reserved.</p>
-    </footer>
-
-    <script src="js/checkout.js"></script>
+  </main>
+  <footer>
+    <p>&copy; 2026 UrbanCart. All rights reserved.</p>
+  </footer>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanCart | Checkout Flow</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="cart">
+<nav class="navbar">
+    <div class="logo" onclick="window.location.href='index.html'">UrbanCart</div>
+    <div class="nav-right">  
+        <div class="cart-trigger" onclick="showCart()">
+            <span class="nav-link" onclick="window.location.href='index.html'">Shop</span>
+           <i class="fas fa-shopping-basket"></i> Cart
+          <span class="badge" id="cart-count">0</span>
+        </div>
+    </div>
+</nav>
+<div id="toast-container"></div>
+
+<div class="container">
+    <div class="stepper" id="checkout-stepper" style="display:none;">
+        <div class="step active"><span>1</span><p>Cart</p></div>
+        <div class="step active"><span>2</span><p>Shipping</p></div>
+        <div class="step active"><span>3</span><p>Payment</p></div>
+        <div class="step" id="step-confirm"><span>4</span><p>Confirmation</p></div>
+    </div>
+
+    <div class="layout-grid">
+        <div class="main-content">
+            <!-- cart view only; shop content handled on index.html -->
+           <div id="view-cart" class="view active">
+    <h2 class="view-title">Shopping Cart</h2>
+    <div id="empty-cart-msg" class="empty-cart-container">
+    <div class="sad-box">
+        <img src="images/empty-cart.svg" alt="Empty Cart" class="empty-cart-img">
+        
+        <!-- <div class="wheel left"></div>
+        <div class="wheel right"></div> -->
+    </div>
+    <h2 class="empty-title">Your cart is empty</h2>
+    <p class="empty-text">Looks like you haven't added anything to your cart yet.</p>
+    <button class="btn-main continue-shopping" onclick="window.location.href='index.html'">
+        Continue Shopping
+    </button>
+</div>
+
+    <div id="cart-list"></div>
+</div>
+
+            <form id="view-checkout" class="view" onsubmit="event.preventDefault(); finalizeOrder();">
+                <div class="checkout-block">
+                    <h2 class="section-title">Shipping Information</h2>
+                    <div class="form-card">
+                        <div class="f-row">
+                            <div class="f-group"><label>First Name</label><input type="text" placeholder="John" required></div>
+                            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Doe" required></div>
+                        </div>
+                        <div class="f-row">
+                            <div class="f-group"><label>Email</label><input type="email" placeholder="john@example.com" required></div>
+                            <div class="f-group"><label>Phone</label><input type="text" placeholder="(555) 123-4567" required></div>
+                        </div>
+                        <div class="f-group full"><label>Address</label><input type="text" placeholder="123 Main Street" required></div>
+                        <div class="f-row triplet">
+                            <div class="f-group"><label>City</label><input type="text" placeholder="New York" required></div>
+                            <div class="f-group"><label>State</label><input type="text" placeholder="NY" required></div>
+                            <div class="f-group"><label>ZIP Code</label><input type="text" placeholder="10001" required></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-block">
+                    <h2 class="section-title">Payment Information</h2>
+                    <div class="form-card">
+                        <div class="f-group full"><label>Cardholder Name</label><input type="text" placeholder="John Doe" required></div>
+                        <div class="f-group full"><label>Card Number</label><input type="text" placeholder="1234 5678 9012 3456" required></div>
+                        <div class="f-row">
+                            <div class="f-group"><label>Expiry (MM/YY)</label><input type="text" placeholder="12/28" required></div>
+                            <div class="f-group"><label>CVV</label><input type="password" placeholder="123" required></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-main place-order-btn">Place Order</button>
+            </form> 
+
+            <div id="view-success" class="view text-center">
+                <div class="success-wrap">
+                    <div class="check-icon"><i class="fas fa-check"></i></div>
+                    <h1>Order Confirmed!</h1>
+                    <p>Thank you for your purchase. Your order has been placed successfully.</p>
+                    <div class="order-number-box">
+                        <small>ORDER NUMBER</small>
+                        <strong>UC-MM3T5YJH-BG3EML</strong>
+                    </div>
+                    <button class="btn-main" onclick="location.reload()">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="sidebar-aside" id="sidebar" style="display:none;">
+            <div class="summary-card">
+                <h3>Order Summary</h3>
+                
+                <div id="checkout-thumbnails" class="checkout-thumbs-list" style="display:none;"></div>
+
+                <div class="price-line"><span>Subtotal</span><span id="sub-total">$0.00</span></div>
+                <div class="price-line"><span>Shipping</span><span class="free-text">FREE</span></div>
+                <div class="price-line"><span>Estimated Tax</span><span id="tax-total">$0.00</span></div>
+                <hr class="summary-divider">
+                <div class="price-line total-line"><strong>Total</strong><strong id="final-total">$0.00</strong></div>
+
+                <div id="promo-wrapper" class="promo-box">
+                    <label>Promo Code</label>
+                    <div class="promo-input">
+                        <input type="text" placeholder="Enter code">
+                        <button type="button">Apply</button>
+                    </div>
+                </div>
+
+                <button class="btn-main" id="proceed-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+                <p class="continue-link" onclick="window.location.href='index.html'">Continue Shopping</p>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
