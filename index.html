@@ -4,38 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UrbanCart — Shop</title>
-  <link rel="stylesheet" href="C:\Users\prade\Downloads\E-commerce_2\E-commerce_2\UrbanCart\css\style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header class="navbar">
     <div class="logo">
        <div class="logoimg">
-         <img class="HeadeLogo"  onclick="window.location.reload();" src="imges/Logo.png">
+         <img class="HeadeLogo" onclick="window.location.href='index.html';" src="imges/Logo.png" alt="UrbanCart logo">
        </div>
-        <div class="HeadeLogo_Name"><p class="LogoName"
-          onclick="window.location.reload();">UrbanCart</p>
-       </div> 
+       <div class="HeadeLogo_Name">
+         <p class="LogoName" onclick="window.location.href='index.html';">UrbanCart</p>
+       </div>
     </div>
 
     <nav class="Nav">
-    <div class="Shop">
-        <a href="javascript:void(0)" class="active" id="nav-shop">Shop</a>
-    </div>
-    <div class="Cart">
-        <div class="Cartimg">
-            <img src="imges/cart.png" alt="CartLogo">
+        <div class="Shop">
+         <a href="index.html" class="active">Shop</a>
         </div>
-        <div class="CartInfo"> 
-    <a href="C:\Users\prade\OneDrive\Desktop\New git Project\javascript-projects-starter\02-urbancart\ufff.html" class="cart-icon" id="nav-cart">
-        <i class="fa-solid fa-cart-shopping"></i>
-        Cart
-        <span id="cart-count" class="badge">0</span> 
-    </a>
-</div>
-    </div>
-</nav>
+        <div class="Cart">
+          <a href="cart.html" class="cart-icon">
+            <img src="imges/cart.png" alt="Cart logo">
+            <span>Cart</span>
+            <span id="cart-count" class="badge">0</span>
+          </a>
+        </div>
+    </nav>
 </header>
+
+<div class="toast-container" id="toastContainer"></div>
 
   <main>
     <!-- HERO SECTION -->
@@ -51,7 +48,7 @@
   </section>
   
     <!-- Featured / Staff Picks section -->
-    <section id="Staff Picks">
+     <section id="Staff Picks">
        <div class="FeaturedHeading">
          <h1 class="FeaturedHeading1">Staff Picks</h1>
          <p class="FeaturedHeading2">Hand-picked favorites from our team</p>
@@ -76,7 +73,7 @@
 
             </div>
             <div class="FeaturedButton">
-              <button onclick="addToCart(1,'Essence Mascara Lash Princess',8.94,'images/mascara.png')">
+              <button onclick="addToCart(1,'Essence Mascara Lash Princess',8.94,'imges/Beauty.webp')">
                     Add to Cart
               </button>  
             </div>
@@ -100,7 +97,7 @@
                 <span class="Cost2">$49.99</span>
               </div>
               <div class="FeaturedButton">
-               <button  onclick="addToCart(2,'Calvin Klein CK One',49.05,'images/perfume.png')">
+               <button  onclick="addToCart(2,'Calvin Klein CK One',49.05,'imges/Calvin Klein CK One.webp')">
                     Add to Cart
                </button>
               </div>
@@ -123,7 +120,7 @@
                 <span class="Cost2">$1,899.99</span>
               </div>
               <div class="FeaturedButton">
-                <button onclick="addToCart(3,'Annibale Colombo Bed',1737.16,'images/bed.png')">
+                <button onclick="addToCart(3,'Annibale Colombo Bed',1737.16,'imges/Annibale Colombo Bed.webp')">
                     Add to Cart
                 </button>
               </div>
@@ -146,12 +143,12 @@
                 <span class="Cost2">$799.99</span>
               </div>
               <div class="FeaturedButton">
-                <button onclick="addToCart(3,'Annibale Colombo Bed',1737.16,'images/bed.png')">
+                <button onclick="addToCart(4,'Wooden Bathroom Sink With Mirror',729.59,'imges/Sink With Mirror.webp')">
                     Add to Cart
                 </button>
               </div>
           </div>
-       </div>
+       </div> 
   
     <!-- Category filter pills -->
      <section id="CategoryPills">
@@ -183,16 +180,16 @@
   <button class="filterButton" onclick="filterProducts('Women watches')">Women Watches</button> -->
    <button class="filterButton">All Products</button>
    
-            </div>
-                <!-- Sorting -->
-             <section>
-               <div class="Sort">
-                 <div class="ShowingProducts">
+</div>
+<!-- Sorting -->
+  <section>
+    <div class="Sort">
+       <div class="ShowingProducts">
           <p class="ShowProducts" id="showCount">
              Showing 0 of 0 products
           </p>
-              </div>  
-             <div class="Sorting">
+        </div>  
+       <div class="Sorting">
           <span>Sort by:</span>
              <select id="sortSelect">
                <option value="default">Default</option>
@@ -201,15 +198,15 @@
                <option value="rating">Top Rated</option>
                <option value="name">Name: A-Z</option>
               </select>
-             </div>
-              </div>
-               </section>
-             <div class="product" id="product">
-                <div class="productItems">
-                 +<div class="productimg">
-                     <img class="product-card__image" src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp" alt="Essence Mascara Lash Princess" loading="lazy">
-                   </div>
-                      <div class="Product-cardCategories">
+       </div>
+    </div>
+  </section>
+<div class="product" id="product">
+  <!-- <div class="productItems">
+      +<div class="productimg">
+       <img class="product-card__image" src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp" alt="Essence Mascara Lash Princess" loading="lazy">
+      </div>
+      <div class="Product-cardCategories">
               <h3 class="ProductCategories ">Beauty</h3>
             </div>
             <div class="Product-card_Name">
@@ -227,46 +224,12 @@
               <button onclick="addToCart(1,'Essence Mascara Lash Princess',8.94,'images/mascara.png')">
                     Add to Cart
               </button>  
-            </div>
+            </div> -->
 
-         </div>
-
-       </div>
-     </section>
-     <main>
-
-  <div id="view-cart" style="display: none; padding: 40px 5%;">
-      <h1 class="FeaturedHeading1">Shopping Cart</h1>
-      
-      <div class="cart-layout" style="display: flex; gap: 30px; margin-top: 30px; align-items: flex-start;">
-          
-          <div id="cart-items-container" style="flex: 2;">
-              </div>
-
-          <aside class="order-summary" style="flex: 1; border: 1px solid #ddd; padding: 25px; border-radius: 12px; background: #fff; position: sticky; top: 20px;">
-              <h2 style="margin-top: 0;">Order Summary</h2>
-              <hr>
-              <div style="display: flex; justify-content: space-between; margin: 15px 0;">
-                  <span>Subtotal</span>
-                  <span id="summary-subtotal">$0.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin: 15px 0;">
-                  <span>Shipping</span>
-                  <span style="color: green; font-weight: bold;">FREE</span>
-              </div>
-              <hr>
-              <div style="display: flex; justify-content: space-between; font-size: 1.4rem; font-weight: bold; margin: 20px 0;">
-                  <span>Total</span>
-                  <span id="summary-total">$0.00</span>
-              </div>
-              <button class="LoadButton" style="width: 100%;" onclick="alert('Proceeding to Checkout!')">Checkout Now</button>
-              <p style="text-align: center; color: #666; cursor: pointer; margin-top: 15px;" onclick="showHome()">Continue Shopping</p>
-          </aside>
-      </div>
   </div>
 
-  <div id="toast" style="position: fixed; bottom: 20px; right: -300px; background: #333; color: white; padding: 15px 25px; border-radius: 8px; transition: 0.5s; z-index: 10000;"></div>
-</main>
+</div>
+     </section>
     <!-- Sort bar -->
      <!-- <div class="">Showing of products</div>
      <div class=""></div> -->
@@ -281,6 +244,6 @@
     <p class="FooterSection">&copy; 2026 UrbanCart. All rights reserved.</p>
   </footer>
 
-  <script src="C:\Users\prade\Downloads\E-commerce_2\E-commerce_2\UrbanCart\product.js"></script>
+  <script src="product.js"></script>
 </body>
 </html>

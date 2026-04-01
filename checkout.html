@@ -1,75 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanCart — Checkout</title>
-    <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanCart — Checkout</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/checkout.css">
 </head>
-<body data-page="checkout">
-    <header class="navbar">
-        <div class="logo" onclick="window.location.href='index.html'">UrbanCart</div>
-    </header>
-    <main class="container">
-        <div class="stepper" id="checkout-stepper">
-            <div class="step active"><span>1</span><p>Cart</p></div>
-            <div class="step active"><span>2</span><p>Shipping</p></div>
-            <div class="step active"><span>3</span><p>Payment</p></div>
-            <div class="step"><span>4</span><p>Confirmation</p></div>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <div class="logoimg">
+        <img class="HeadeLogo" onclick="window.location.href='index.html';" src="imges/Logo.png" alt="UrbanCart logo">
+      </div>
+      <div class="HeadeLogo_Name">
+        <p class="LogoName" onclick="window.location.href='index.html';">UrbanCart</p>
+      </div>
+    </div>
+    <nav class="Nav">
+      <div class="Shop">
+        <a href="index.html">Shop</a>
+      </div>
+      <div class="Cart">
+        <a href="cart.html" class="cart-icon">
+          <img src="imges/cart.png" alt="Cart logo">
+          <span>Cart</span>
+          <span id="cart-count" class="badge">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="checkout-page">
+    <section class="checkout-steps">
+      <div class="step step-complete" data-step="cart">
+        <span>1</span>
+        <p>Cart</p>
+      </div>
+      <div class="step-line completed"></div>
+      <div class="step step-complete" data-step="shipping">
+        <span>2</span>
+        <p>Shipping</p>
+      </div>
+      <div class="step-line active"></div>
+      <div class="step step-active" data-step="payment">
+        <span>3</span>
+        <p>Payment</p>
+      </div>
+      <div class="step-line"></div>
+      <div class="step step-upcoming" data-step="confirmation">
+        <span>4</span>
+        <p>Confirmation</p>
+      </div>
+    </section>
+
+    <section class="checkout-content">
+      <div class="checkout-form-panel">
+        <div class="form-card" id="shippingSection">
+          <div class="card-heading">
+            <h2>Shipping Information</h2>
+          </div>
+          <div class="grid-2">
+            <label>
+              <span>First Name</span>
+              <input type="text" id="firstName" placeholder="John">
+            </label>
+            <label>
+              <span>Last Name</span>
+              <input type="text" id="lastName" placeholder="Doe">
+            </label>
+          </div>
+          <div class="grid-2">
+            <label>
+              <span>Email</span>
+              <input type="email" id="email" placeholder="john@example.com">
+            </label>
+            <label>
+              <span>Phone</span>
+              <input type="tel" id="phone" placeholder="(555) 123-4567">
+            </label>
+          </div>
+          <label>
+            <span>Address</span>
+            <input type="text" id="address" placeholder="123 Main Street">
+          </label>
+          <div class="grid-3">
+            <label>
+              <span>City</span>
+              <input type="text" id="city" placeholder="New York">
+            </label>
+            <label>
+              <span>State</span>
+              <input type="text" id="state" placeholder="NY">
+            </label>
+            <label>
+              <span>ZIP Code</span>
+              <input type="text" id="zip" placeholder="10001">
+            </label>
+          </div>
         </div>
-        <div class="layout-grid">
-            <form id="view-checkout" class="view active" onsubmit="handlePlaceOrder(event)">
-                <div class="checkout-block">
-                    <h2 class="section-title">Shipping Information</h2>
-                    <div class="form-card">
-                        <div class="f-row">
-                            <div class="f-group"><label>First Name</label><input type="text" placeholder="John" required></div>
-                            <div class="f-group"><label>Last Name</label><input type="text" placeholder="Doe" required></div>
-                        </div>
-                        <div class="f-row">
-                            <div class="f-group"><label>Email</label><input type="email" placeholder="john@example.com" required></div>
-                            <div class="f-group"><label>Phone</label><input type="text" placeholder="(555) 123-4567" required></div>
-                        </div>
-                        <div class="f-group full"><label>Address</label><input type="text" placeholder="123 Main Street" required></div>
-                        <div class="f-row triplet">
-                            <div class="f-group"><label>City</label><input type="text" placeholder="New York" required></div>
-                            <div class="f-group"><label>State</label><input type="text" placeholder="NY" required></div>
-                            <div class="f-group"><label>ZIP Code</label><input type="text" placeholder="10001" required></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="checkout-block">
-                    <h2 class="section-title">Payment Information</h2>
-                    <div class="form-card">
-                        <div class="f-group full"><label>Cardholder Name</label><input type="text" placeholder="John Doe" required></div>
-                        <div class="f-group full"><label>Card Number</label><input type="text" placeholder="1234 5678 9012 3456" required></div>
-                        <div class="f-row">
-                            <div class="f-group"><label>Expiry (MM/YY)</label><input type="text" placeholder="12/28" required></div>
-                            <div class="f-group"><label>CVV</label><input type="password" placeholder="123" required></div>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn-main place-order-btn">Place Order</button>
-            </form>
 
-            <aside class="sidebar-aside">
-                <div class="summary-card">
-                    <h3>Order Summary</h3>
-                    <div id="checkout-thumbnails"></div>
-                    <div class="price-line total-line">
-                        <strong>Total</strong>
-                        <strong id="final-total">$0.00</strong>
-                    </div>
-                </div>
-            </aside>
+        <div class="form-card" id="paymentSection">
+          <div class="card-heading">
+            <h2>Payment Information</h2>
+          </div>
+          <label>
+            <span>Cardholder Name</span>
+            <input type="text" id="cardName" placeholder="John Doe">
+          </label>
+          <label>
+            <span>Card Number</span>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456">
+          </label>
+          <div class="grid-2">
+            <label>
+              <span>Expiry (MM/YY)</span>
+              <input type="text" id="expiry" placeholder="12/28">
+            </label>
+            <label>
+              <span>CVV</span>
+              <input type="text" id="cvv" placeholder="123">
+            </label>
+          </div>
+          <button id="placeOrderButton" class="checkout-button">Place Order</button>
         </div>
-    </main>
+      </div>
 
-    <footer style="text-align: center; padding: 20px; color: #888;">
-        <p>&copy; 2026 UrbanCart. All rights reserved.</p>
-    </footer>
+      <aside class="checkout-summary">
+        <div class="summary-card">
+          <h2>Order Summary</h2>
+          <div id="checkoutItems" class="summary-items"></div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkoutSubtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span>FREE</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax</span>
+            <span id="checkoutTax">$0.00</span>
+          </div>
+          <div class="summary-row total-row">
+            <strong>Total</strong>
+            <strong id="checkoutTotal">$0.00</strong>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
 
-    <script src="js/checkout.js"></script>
+  <footer class="footer">
+    <p>&copy; 2026 UrbanCart. Built for learning JavaScript.</p>
+  </footer>
+
+  <script src="checkout.js"></script>
 </body>
 </html>
